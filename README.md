@@ -9,4 +9,4 @@
 * Login with admin acount
 * Go to Admin/Config/Appearance
 
-![Theme Setting](https://github.com/20146364/ctfd-themes/tree/master/screenshots/Untitled.png)
+![Theme Setting](https://github.com/20146364/ctfd-themes/blob/master/screenshots/Untitled.png)
