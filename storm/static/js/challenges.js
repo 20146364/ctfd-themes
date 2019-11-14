@@ -277,12 +277,12 @@ function loadchals(cb) {
                 var chalcard = $('<div class="uk-card uk-card-hover uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-fade;"></div>');
 
             } else {
-                var chalbutton = $("<button class='challenge-button uk-button uk-button-text uk-button-large solved-challenge' value='{0}'>Open Challenge</button>".format(chalinfo.id));
+                var chalbutton = $("<div class='uk-card-footer'><button class='challenge-button uk-button uk-button-text uk-button-large solved-challenge' value='{0}'>Open Challenge</button></div>".format(chalinfo.id));
                 var chalcard = $('<div class="uk-card uk-card-hover uk-card-primary uk-card-body" uk-scrollspy="cls: uk-animation-fade;"><div class="uk-card-badge uk-text-success uk-label">Solved</div></div>');
             }
 
             var chalheader = $("<div class='uk-card-header'><h3 class='uk-margin-remove-bottom'>{0}</h3></div>".format(chalinfo.name));
-            var chalscore = $("<div class='uk-card-body'><h1>{0}</h1></div>".format(chalinfo.value));
+            var chalscore = $("<div class='uk-card-body'><h1><span style='font-size: x-large'>Score:</span> {0}</h1></div>".format(chalinfo.value));
             for (var j = 0; j < chalinfo.tags.length; j++) {
                 var tag = 'tag-' + chalinfo.tags[j].value.replace(/ /g, '-');
                 chalwrap.addClass(tag);

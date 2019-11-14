@@ -57,10 +57,10 @@ function scoregraph() {
                 mode: 'lines+markers',
                 name: places[teams[i]]['name'],
                 marker: {
-                    color: colorhash(places[teams[i]]['name'] + places[teams[i]]['id']),
+                    color: colorhashSCOREBOARD(places[teams[i]]['name'] + places[teams[i]]['id'], i),
                 },
                 line: {
-                    color: colorhash(places[teams[i]]['name'] + places[teams[i]]['id']),
+                    color: colorhashSCOREBOARD(places[teams[i]]['name'] + places[teams[i]]['id'], i),
                 }
             };
             traces.push(trace);
@@ -120,6 +120,7 @@ function scoregraph() {
             // displayModeBar: false,
             displaylogo: false
         });
+
     });
 }
 
@@ -127,9 +128,10 @@ function update() {
     updatescores();
     scoregraph();
 }
-setInterval(update, 300000); // Update every 30 min
+setInterval(update, 10000); // Update every 10s
 scoregraph();
 
 window.onresize = function() {
     Plotly.Plots.resize(document.getElementById('score-graph'));
 };
+

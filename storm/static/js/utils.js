@@ -1,9 +1,8 @@
 //http://stackoverflow.com/a/1186309
-$.fn.serializeObject = function()
-{
+$.fn.serializeObject = function () {
     var o = {};
     var a = this.serializeArray();
-    $.each(a, function() {
+    $.each(a, function () {
         if (o[this.name] !== undefined) {
             if (!o[this.name].push) {
                 o[this.name] = [o[this.name]];
@@ -46,7 +45,7 @@ $.fn.serializeJSON = function (omit_nulls) {
 };
 
 //http://stackoverflow.com/a/2648463 - wizardry!
-String.prototype.format = String.prototype.f = function() {
+String.prototype.format = String.prototype.f = function () {
     var s = this,
         i = arguments.length;
 
@@ -57,28 +56,67 @@ String.prototype.format = String.prototype.f = function() {
 };
 
 //http://stackoverflow.com/a/7616484
-String.prototype.hashCode = function() {
+String.prototype.hashCode = function () {
     var hash = 0, i, chr, len;
     if (this.length == 0) return hash;
     for (i = 0, len = this.length; i < len; i++) {
-        chr   = this.charCodeAt(i);
-        hash  = ((hash << 5) - hash) + chr;
+        chr = this.charCodeAt(i);
+        hash = ((hash << 5) - hash) + chr;
         hash |= 0; // Convert to 32bit integer
     }
     return hash;
 };
 
 function colorhash(str) {
-  var hash = 0;
-  for (var i = 0; i < str.length; i++) {
-    hash = str.charCodeAt(i) + ((hash << 5) - hash);
-  }
-  var colour = '#';
-  for (var i = 0; i < 3; i++) {
-    var value = (hash >> (i * 8)) & 0xFF;
-    colour += ('00' + value.toString(16)).substr(-2);
-  }
-  return colour;
+    var hash = 0;
+    for (var i = 0; i < str.length; i++) {
+        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    var colour = '#';
+    for (var i = 0; i < 3; i++) {
+        var value = (hash >> (i * 8)) & 0xFF;
+        colour += ('00' + value.toString(16)).substr(-2);
+    }
+    return colour;
+}
+
+function colorhashSCOREBOARD(str, index) {
+    let colour = '#';
+    if (index > 5) {
+        var hash = 0;
+        for (let i = 0; i < str.length; i++) {
+            hash = str.charCodeAt(i) + ((hash << 5) - hash);
+        }
+        for (var i = 0; i < 3; i++) {
+            let value = (hash >> (i * 8)) & 0xFF;
+            colour += ('00' + value.toString(16)).substr(-2);
+        }
+
+    } else {
+        switch (index) {
+            case 0:
+                colour = "#00bcd4";
+                break;
+            case 1:
+                colour = "#9c27b0";
+                break;
+            case 2:
+                colour = "#f44336";
+                break;
+            case 3:
+                colour = "#388e3c";
+                break;
+            case 4:
+                colour = "#fdd835";
+                break;
+            case 5:
+                colour = "#3949ab";
+                break;
+        }
+    }
+
+    return colour;
+
 }
 
 function htmlentities(string) {
@@ -96,8 +134,8 @@ function cumulativesum(arr) {
 }
 
 // http://stepansuvorov.com/blog/2014/04/jquery-put-and-delete/
-jQuery.each(["patch", "put", "delete"], function(i, method) {
-    jQuery[method] = function(url, data, callback, type) {
+jQuery.each(["patch", "put", "delete"], function (i, method) {
+    jQuery[method] = function (url, data, callback, type) {
         if (jQuery.isFunction(data)) {
             type = type || callback;
             callback = data;

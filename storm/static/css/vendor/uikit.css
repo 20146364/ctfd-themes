@@ -6671,39 +6671,38 @@ select.uk-form-width-xsmall {
 }
 
 .uk-section-small {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.uk-section-large {
     padding-top: 40px;
     padding-bottom: 40px
 }
 
-.uk-section-large {
-    /*padding-top: 70px;*/
-    /*padding-bottom: 70px*/
-}
-
 @media (min-width: 960px) {
     .uk-section-large {
-        /*padding-top: 140px;*/
-        /*padding-bottom: 140px*/
+        padding-top: 80px;
+        padding-bottom: 80px
     }
 }
 
 .uk-section-xlarge {
-    padding-top: 140px;
-    padding-bottom: 140px
+    padding-top: 80px;
+    padding-bottom: 80px
 }
 
 @media (min-width: 960px) {
     .uk-section-xlarge {
-        /*padding-top: 210px;*/
-        padding-bottom: 210px
+        padding-top: 100px;
+        padding-bottom: 100px
     }
 }
 
 
 @media (min-width: 1920px) {
     .uk-background-secondary {
-        /*padding-top: 210px;*/
-        min-height: 725px;
+        min-height: 100%;
     }
     .uk-section.uk-section-secondary{
         min-height: 375px;
@@ -7198,7 +7197,7 @@ select.uk-form-width-xsmall {
 }
 
 .uk-card-body {
-    padding: 20px 20px
+    padding: 10px 10px
 }
 
 .uk-card-header {
@@ -7206,12 +7205,25 @@ select.uk-form-width-xsmall {
 }
 
 .uk-card-footer {
-    padding: 10px 20px
+    /*padding: 10px 20px*/
+}
+
+@media (max-width: 1366px){
+    .uk-card-footer {
+        padding: 0;
+    }
 }
 
 @media (min-width: 1200px) {
+
+    @media (max-width: 1366px){
+        .uk-card-footer {
+            padding: 10px !important;
+        }
+    }
+
     .uk-card-body {
-        padding: 40px 40px
+        /*padding: 40px 40px*/
     }
 
     .uk-card-header {
@@ -7259,15 +7271,15 @@ select.uk-form-width-xsmall {
 .uk-card-title {
     font-size: 18px;
     line-height: 1.4;
-    font-family: Raleway;
+    font-family: Arial, sans-serif;
     font-weight: 500;
     text-transform: uppercase
 }
 
 .uk-card-badge {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 10px;
+    right: 10px;
     z-index: 1;
     padding: 0 7px;
     color: #888;
@@ -9016,9 +9028,9 @@ ul.uk-nav-sub {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     padding: 15px 15px;
-    background: rgba(17, 17, 17, .4);
+    background: rgba(17, 17, 17, .8);
     opacity: 0;
-    transition: opacity .15s linear
+    transition: opacity .15s linear;
 }
 
 @media (min-width: 640px) {
@@ -9054,7 +9066,9 @@ ul.uk-nav-sub {
     transition: .3s linear;
     transition-property: opacity, transform;
     border-radius: 2px;
-    box-shadow: 2px 21px 50px 0 rgba(0, 0, 0, .3)
+    box-shadow: 2px 21px 50px 0 rgba(0, 0, 0, .3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
 }
 
 .uk-open > .uk-modal-dialog {
@@ -11049,6 +11063,11 @@ iframe.uk-cover {
 }
 
 .uk-background-secondary {
+    /*background-color: #111*/
+}
+
+
+main {
     background-color: #111
 }
 

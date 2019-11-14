@@ -82,3 +82,57 @@ button.btn-floating-custom {
     background-color: #F44336 !important;
 }
 
+.uk-card-primary .uk-card-header {
+    border-bottom: 2px solid rgba(244, 67, 54, 0.38);
+}
+
+.uk-card-primary  .uk-card-footer {
+    border-top: 2px solid rgba(244, 67, 54, 0.38);
+}
+
+.uk-margin-remove-bottom{
+    font-family: 'Montserrat-Regular', sans-serif !important;
+    font-weight: bold;
+}
+.uk-background-body-index{
+    min-height: 100vh;
+    background-image: url("../../static/img/home.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.no-background{
+    background-color: transparent !important;
+}
+
+.set-font{
+    font-family: 'Arial', sans-serif ;
+}
+
+.uk-modal-title{
+    font-family: 'Arial', sans-serif ;
+    font-size: larger;
+    font-weight: bold;
+}
+
+#challenge p{
+    color: white;
+}
+
+.uk-modal-dialog.uk-background-secondary{
+ background-color: #242424;
+}
+.uk-modal-header.uk-background-muted.uk-grid-collapse.uk-grid{
+    background-color: #000000;
+
+}
+.uk-modal-footer.uk-background-muted{
+    background-color: #000000;
+}
+
+.form-control.uk-input{
+    background: #242424;
+}
+.form-control.uk-input:focus{
+    background: #242424;
+}
