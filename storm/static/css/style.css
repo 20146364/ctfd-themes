@@ -136,3 +136,22 @@ button.btn-floating-custom {
 .form-control.uk-input:focus{
     background: #242424;
 }
+
+.uk-navbar-item.uk-logo{
+    font-family: Montserrat-Regular, sans-serif;
+}
+.uk-navbar-nav > li > a{
+    font-family: Montserrat-Regular, sans-serif !important;
+}
+
+.uk-heading-primary{
+    font-family: Montserrat-Regular, sans-serif !important;
+}
+
+#user-place{
+    font-family: Montserrat-Regular, sans-serif !important;
+}
+
+.uk-modal-body.uk-background-secondary > p{
+    color: white;
+}

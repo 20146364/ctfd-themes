@@ -1,48 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></head>
-<style>
-    html, body {
-        height: 100%;
-        width: 100%;
-        margin: 0;
-    }
-    .test{
-        width: 100%;
-        background-color: #0a0a0a;
-        background-image: url("../static/img/home.png");
-        height: 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-</style>
-<body>
-
-
-
-    <h1 class="text-center" style="color: white">DIỄN TẬP AN TOÀN THÔNG TIN MẠNG VĨNH PHÚC 2019</h1>
-    <h3 class="text-center mt-3" style="color: white" >DIỄN TẬP PHÁT HIỆN VÀ PHỐI HỢP XỬ LÝ TẤN CÔNG HỆ THỐNG CÔNG NGHỆ THÔNG TIN <br/> PHỤC VỤ CHÍNH QUYỀN ĐIỆN TỬ TỈNH VĨNH PHÚC NĂM 2019</h3>
-    <div class="row" style="margin-left: 0 !important; margin-right: 0 !important; margin-top: 30vh">
-        <div class="col-4" >
-            <h4 class="text-center" style="color: white">CƠ QUAN CHỦ TRÌ</h4>
-            <h5 class="text-center mt-2" style="color: white">SỞ THÔNG TIN VÀ TRUYỀN THÔNG TỈNH VĨNH PHÚC</h5>
-        </div>
-        <div class="col-4"></div>
-        <div class="col-4">
-            <h4 class="text-center" style="color: white">ĐƠN VỊ TỔ CHỨC</h4>
-            <h5 class="text-center mt-2" style="color: white">CỤC AN TOÀN THÔNG TIN - BỘ THÔNG TIN & TRUYỀN THÔNG</h5>
-            <h5 class="text-center mt-2" style="color: white">CÔNG TY CỔ PHẦN CÔNG NGHỆ THÔNG TIN VÀ TRUYỀN THÔNG VIỆT NAM - VNIST</h5>
-        </div>
+<div class="uk-modal-dialog uk-background-secondary">
+    <button class="uk-modal-close-default" type="button" uk-close></button>
+    <div class="uk-modal-header uk-background-muted uk-grid-collapse" uk-grid>
+        <div class="uk-width-3-4@s">
+            <h3 class='uk-modal-title'>{{ name }} - {{ value }}</h3></div>
+        <div class='uk-width-1-4@s'> {% for tag in tags %}
+            <span class='uk-label'>{{tag}}</span> {% endfor %}</div>
     </div>
-
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-</body>
-</html>
+    <div class="uk-modal-body">
+        <ul uk-tab class="nav-items" uk-switcher="animation: uk-animation-fade">
+            <li class='nav-item'>
+                <a href="#challenge">Challenge</a>
+            </li>
+            {% if solves == None %} {% else %}
+                <li class='nav-item'>
+                    <a href="#solves" class='challenge-solves'>{{ solves }} Solves</a>
+                </li>
+            {% endif %}
+        </ul>
+        <ul class="uk-switcher uk-margin">
+            <li id='challenge'>
+                <p class="challenge-desc">{{ description | safe }}</p>
+                <div class="challenge-hints hint-row row">
+                    {% for hint in hints %}
+                        <div class='uk-text-center uk-margin'>
+                            <a class="uk-button uk-button-small uk-button-default" href="javascript:;" onclick="javascript:loadhint({{hint.id}})">
+                                {% if hint.content %}
+                                    <small>
+                                        View Hint
+                                    </small>
+                                {% else %}
+                                    {% if hint.cost %}
+                                        <small>
+                                            Unlock Hint for {{hint.cost}} points
+                                        </small>
+                                    {% else %}
+                                        <small>
+                                            View Hint
+                                        </small>
+                                    {% endif %}
+                                {% endif %}
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="challenge-files uk-margin uk-text-center">
+                    {% for file in files %}
+                        <div class='uk-margin-small'>
+                            <a class='uk-button uk-button-primary uk-button-small text-truncate' href='{{script_root}}/files/{{file}}'>
+                                <span uk-icon="icon: download"></span>
+                                <small>
+                                    {% set segments = file.split('/') %}
+                                    {% set file = segments | last %}
+                                    {% set token = file.split('?') | last %}
+                                    {% if token %}
+                                        {{ file | replace("?" + token, "") }}
+                                    {% else %}
+                                        {{ file }}
+                                    {% endif %}
+                                </small>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </li>
+            <li>
+                <div id='solves'>
+                    <table class="uk-table uk-table-striped uk-table-hover uk-text-center">
+                        <thead>
+                        <tr>
+                            <th class='uk-text-center'>Name</th>
+                            <th class='uk-text-center'>Date</th>
+                        </tr>
+                        </thead>
+                        <tbody id="challenge-solves-names">
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="uk-modal-footer uk-background-muted">
+        <form class="uk-form uk-form-stacked uk-grid-small" uk-grid>
+            <div class="uk-width-3-4@s">
+                <input class="form-control uk-input uk-input-large uk-input-width-medium" type="text" name="answer" id="submission-input" placeholder="{{ name }} Flag" />
+                <input id="challenge-id" type="hidden" value="{{id}}">
+            </div>
+            <div class="uk-width-1-4@s">
+                <button type="submit" id="submit-key" tabindex="5" class="uk-button uk-button-secondary float-right">Submit</button>
+            </div>
+            <div id="result-notification" class="alert uk-margin uk-text-center uk-width-1-1@s" uk-alert role="alert" style="display: none;">
+                <p class='uk-text-large' id="result-message"></p>
+            </div>
+        </form>
+    </div>
+</div>

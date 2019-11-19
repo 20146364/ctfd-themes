@@ -5271,6 +5271,10 @@ ul.uk-nav-sub {
     text-align: center !important
 }
 
+.uk-text-center th {
+    color: white !important
+}
+
 .uk-text-justify {
     text-align: justify !important
 }

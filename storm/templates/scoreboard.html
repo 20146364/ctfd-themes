@@ -2,7 +2,7 @@
 {% block content %}
     <div class="uk-section-default">
         <div class="uk-section uk-section-xlarge uk-light uk-background-cover"
-             style="background-image: url({{ url_for('views.themes', path='img/Startup-israeliana-premiata-dall’UNESCO.jpg') }})">
+             style="background-image: url({{ url_for('views.themes', path='img/scoreboard.jpg') }})">
             <div class="uk-container uk-container-medium uk-text-center">
                 <h1 class='uk-heading-primary'>Scoreboard</h1>
             </div>
@@ -46,15 +46,15 @@
                     <table class='uk-table uk-table-large uk-table-hover uk-table-striped'>
                         <thead>
                         <tr>
-                            <td class='uk-text-center uk-text-large uk-table-shrink'>Place</td>
-                            <td class='uk-text-center uk-text-large'>Team</td>
-                            <td class='uk-text-center uk-text-large'>Score</td>
+                            <td class='uk-text-center uk-text-large uk-table-shrink' style="color: white">Place</td>
+                            <td class='uk-text-center uk-text-large' style="color: white">Team</td>
+                            <td class='uk-text-center uk-text-large' style="color: white">Score</td>
                         </tr>
                         </thead>
                         <tbody>
                         {% for standing in standings %}
                             <tr>
-                                <th scope="row" class="uk-text-center">{{ loop.index }}</th>
+                                <th scope="row" class="uk-text-center" style="color: white">{{ loop.index }}</th>
                                 <td>
                                     <a href="{{ generate_account_url(standing.account_id) }}">
                                         {{ standing.name | truncate(50) }}
@@ -71,7 +71,7 @@
                                         {% endif %}
                                     </a>
                                 </td>
-                                <td>{{ standing.score }}</td>
+                                <td style="color: white">{{ standing.score }}</td>
                             </tr>
                         {% endfor %}
                         </tbody>
